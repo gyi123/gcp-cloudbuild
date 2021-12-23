@@ -20,5 +20,5 @@ steps:
     - --image=gcr.io/$PROJECT_ID/hellospring
     - --location=uscentral-1
     - --cluster=gyi-cluster
-  options:
+options:
     logging: CLOUD_LOGGING_ONLY
