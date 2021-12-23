@@ -18,7 +18,7 @@ steps:
     - run
     - --filename=kubernetes.yaml
     - --image=gcr.io/$PROJECT_ID/hellospring
-    - --location=uscentral1-c
+    - --location=us-central1-c
     - --cluster=gyi-cluster
 options:
     logging: CLOUD_LOGGING_ONLY
