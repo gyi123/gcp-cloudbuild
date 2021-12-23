@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "hellospring"
+  namespace: "default"
+  labels:
+    app: "hellospring"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "hellospring"
+  template:
+    metadata:
+      labels:
+        app: "hellospring"
+    spec:
+      containers:
+      - name: "hellospring-sha256-1"
+        image: "gcr.io/qk-docker/hellospring@sha256:273cc29b78151295fa6d438875a8de19f2d9a94fe93f195f9cd814368822e761"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "hellospring-hpa-fbo0"
+  namespace: "default"
+  labels:
+    app: "hellospring"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "hellospring"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
