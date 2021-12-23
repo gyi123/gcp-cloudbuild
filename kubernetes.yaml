@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "hellospring-sha256-1"
-        image: "gcr.io/qk-docker/hellospring@sha256:273cc29b78151295fa6d438875a8de19f2d9a94fe93f195f9cd814368822e761"
+        image: "gcr.io/qk-docker/hellospring"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
